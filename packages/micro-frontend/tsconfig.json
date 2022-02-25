@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "moduleResolution": "node",
+        "module": "esnext",
+        "jsx": "react",
+        "strict": true,
+        "declaration": true,
+        "outDir": "./lib",
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "typeRoots": ["./node_modules/@types"]
+    },
+    "exclude": ["node_modules", "__tests__", "__mocks__", "docs", "lib", "samples"],
+    "include": [
+      "./src"
+    ]
+}
