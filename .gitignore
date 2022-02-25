@@ -72,9 +72,10 @@ bundles/
 ocv/
 
 # editor specific
-../../.idea/
+.idea
 .vs/
 .swp
+
 
 # test results
 test-results.trx

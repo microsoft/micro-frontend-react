@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "projects": {
+    "@microsoft/micro-frontend": {
+      "root": "packages/micro-frontend",
+      "projectType": "library",
+      "implicitDependencies": []
+    }
+  }
+}
