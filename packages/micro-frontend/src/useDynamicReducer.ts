@@ -1,1 +1,1 @@
-export * from './Hooks/useDynamicReducer';
+export * from './Components/useDynamicReducer';

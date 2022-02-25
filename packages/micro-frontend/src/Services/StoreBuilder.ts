@@ -5,178 +5,173 @@ import persistStorage from 'redux-persist/es/storage';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 import { ReduxLoggerOptions, createLogger } from 'redux-logger';
 import {
-    IReducerRegistry,
-    ReducerNames,
-    IStoreBuilderResult,
-    IStoreBuilder,
-    IOptionalPersistConfig,
-    IDefaultState,
-    IComponentContext,
+  IReducerRegistry,
+  ReducerNames,
+  IStoreBuilderResult,
+  IStoreBuilder,
+  IOptionalPersistConfig,
+  IDefaultState,
+  IComponentContext,
 } from '../Models';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 export class StoreBuilder<T extends IDefaultState> implements IStoreBuilder<T> {
-    private readonly initialState: T;
-    private readonly reducerRegistery: IReducerRegistry;
+  private readonly initialState: T;
+  private readonly reducerRegistery: IReducerRegistry;
 
-    private middlewares: Middleware[] = [];
-    private sagaMiddleware: SagaMiddleware | undefined;
-    private context: IComponentContext | undefined;
-    private persistConfig: PersistConfig<T> = {
-        key: 'root',
-        storage: persistStorage,
-        stateReconciler: autoMergeLevel2,
+  private middlewares: Middleware[] = [];
+  private sagaMiddleware: SagaMiddleware | undefined;
+  private context: IComponentContext | undefined;
+  private persistConfig: PersistConfig<T> = {
+    key: 'root',
+    storage: persistStorage,
+    stateReconciler: autoMergeLevel2,
 
-        // https://github.com/rt2zz/redux-persist/issues/786
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        timeout: null,
+    // https://github.com/rt2zz/redux-persist/issues/786
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    timeout: null,
+  };
+  private loggerConfig: ReduxLoggerOptions = {};
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private rootSagas: any[] = [];
+
+  public constructor(reducerRegistery: IReducerRegistry, initialState: T = { dynamic: {} } as T) {
+    this.reducerRegistery = reducerRegistery;
+    this.initialState = {
+      dynamic: { ...initialState.dynamic },
+      ...initialState,
     };
-    private loggerConfig: ReduxLoggerOptions = {};
+  }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private rootSagas: any[] = [];
+  public configureSaga(context: IComponentContext): IStoreBuilder<T> {
+    this.context = context;
+    this.sagaMiddleware = createSagaMiddleware({
+      context,
+    });
+    this.middlewares.push(this.sagaMiddleware);
 
-    public constructor(reducerRegistery: IReducerRegistry, initialState: T = { dynamic: {} } as T) {
-        this.reducerRegistery = reducerRegistery;
-        this.initialState = {
-            dynamic: { ...initialState.dynamic },
-            ...initialState,
-        };
+    return this;
+  }
+
+  public configureLogger(enableOrOption: boolean | ReduxLoggerOptions | undefined): IStoreBuilder<T> {
+    if (enableOrOption !== false) {
+      const opt = {
+        ...this.loggerConfig,
+        ...(typeof enableOrOption !== 'boolean' ? enableOrOption : {}),
+      };
+
+      this.middlewares.push(createLogger(opt));
     }
 
-    public configureSaga(context: IComponentContext): IStoreBuilder<T> {
-        this.context = context;
-        this.sagaMiddleware = createSagaMiddleware({
-            context,
-        });
-        this.middlewares.push(this.sagaMiddleware);
+    return this;
+  }
 
-        return this;
-    }
+  public configurePersistor(config: IOptionalPersistConfig<T>): IStoreBuilder<T> {
+    this.persistConfig = {
+      ...this.persistConfig,
+      ...config,
+    };
 
-    public configureLogger(enableOrOption: boolean | ReduxLoggerOptions | undefined): IStoreBuilder<T> {
-        if (enableOrOption !== false) {
-            const opt = {
-                ...this.loggerConfig,
-                ...(typeof enableOrOption !== 'boolean' ? enableOrOption : {}),
-            };
+    return this;
+  }
 
-            this.middlewares.push(createLogger(opt));
-        }
+  public addMiddleware(middleware: Middleware): IStoreBuilder<T> {
+    this.middlewares.push(middleware);
 
-        return this;
-    }
+    return this;
+  }
 
-    public configurePersistor(config: IOptionalPersistConfig<T>): IStoreBuilder<T> {
-        this.persistConfig = {
-            ...this.persistConfig,
-            ...config,
-        };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public addRootSagas(sagas: any[]): IStoreBuilder<T> {
+    this.rootSagas = sagas;
 
-        return this;
-    }
+    return this;
+  }
 
-    public addMiddleware(middleware: Middleware): IStoreBuilder<T> {
-        this.middlewares.push(middleware);
+  public build(): IStoreBuilderResult<T> {
+    if (!this.sagaMiddleware) throw new Error('Saga middleware was not configured.');
+    if (!this.context) throw new Error('Contexts must be configured using configureContext method');
 
-        return this;
-    }
+    const reducers = this.combine(
+      this.reducerRegistery.getReducers(),
+      this.reducerRegistery.getDynamicReducers(),
+      [],
+      this.initialState
+    );
+    const persistedReducer = persistReducer(this.persistConfig, reducers);
+    const ifDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+    const store = createStore(
+      persistedReducer,
+      this.initialState,
+      !ifDev ? applyMiddleware(...this.middlewares) : composeWithDevTools(applyMiddleware(...this.middlewares))
+    );
+    const persistor = persistStore(store);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    public addRootSagas(sagas: any[]): IStoreBuilder<T> {
-        this.rootSagas = sagas;
-
-        return this;
-    }
-
-    public build(): IStoreBuilderResult<T> {
-        if (!this.sagaMiddleware) throw new Error('Saga middleware was not configured.');
-        if (!this.context) throw new Error('Contexts must be configured using configureContext method');
-
-        const reducers = this.combine(
-            this.reducerRegistery.getReducers(),
-            this.reducerRegistery.getDynamicReducers(),
-            [],
-            this.initialState
+    this.reducerRegistery.addChangeListener(
+      'default',
+      (
+        newReducers: ReducersMapObject,
+        newDynamicReducers: ReducersMapObject,
+        persistBlacklistedDynamicReducers: ReducerNames
+      ): void => {
+        store.replaceReducer(
+          persistReducer(
+            this.persistConfig,
+            this.combine(newReducers, newDynamicReducers, persistBlacklistedDynamicReducers, store.getState())
+          )
         );
-        const persistedReducer = persistReducer(this.persistConfig, reducers);
-        const ifDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-        const store = createStore(
-            persistedReducer,
-            this.initialState,
-            !ifDev ? applyMiddleware(...this.middlewares) : composeWithDevTools(applyMiddleware(...this.middlewares))
-        );
-        const persistor = persistStore(store);
+        persistor.persist();
+      }
+    );
 
-        this.reducerRegistery.addChangeListener(
-            'default',
-            (
-                newReducers: ReducersMapObject,
-                newDynamicReducers: ReducersMapObject,
-                persistBlacklistedDynamicReducers: ReducerNames
-            ): void => {
-                store.replaceReducer(
-                    persistReducer(
-                        this.persistConfig,
-                        this.combine(
-                            newReducers,
-                            newDynamicReducers,
-                            persistBlacklistedDynamicReducers,
-                            store.getState()
-                        )
-                    )
-                );
-                persistor.persist();
-            }
-        );
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this.rootSagas.map((saga) => this.sagaMiddleware!.run(saga));
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        this.rootSagas.map((saga) => this.sagaMiddleware!.run(saga));
+    return {
+      store,
+      reducerRegistry: this.reducerRegistery,
+      runSaga: this.sagaMiddleware.run,
+      context: this.context,
+    };
+  }
 
-        return {
-            store,
-            reducerRegistry: this.reducerRegistery,
-            runSaga: this.sagaMiddleware.run,
-            context: this.context,
-        };
+  private combine(
+    reducers: ReducersMapObject,
+    dynamicReducers: ReducersMapObject,
+    persistBlacklistedDynamicReducers: ReducerNames,
+    currentState: T | null = null
+  ): Reducer {
+    const reducerNames = Object.keys(reducers);
+    const dynamicReducerNames = Object.keys(dynamicReducers);
+
+    Object.keys(currentState || this.initialState).forEach((item: string): void => {
+      if (reducerNames.indexOf(item) === -1) {
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        reducers[item] = (state = null): {} => state;
+      }
+    });
+
+    Object.keys((currentState && currentState.dynamic) || {}).forEach((item: string) => {
+      if (dynamicReducerNames.indexOf(item) === -1) {
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        dynamicReducers[item] = (state = null): {} => state;
+      }
+    });
+
+    if (dynamicReducerNames.length > 0) {
+      reducers.dynamic = persistReducer(
+        {
+          ...this.persistConfig,
+          key: `${this.persistConfig.key}.dynamic`,
+          whitelist: undefined,
+          blacklist: persistBlacklistedDynamicReducers,
+        },
+        combineReducers(dynamicReducers)
+      );
     }
 
-    private combine(
-        reducers: ReducersMapObject,
-        dynamicReducers: ReducersMapObject,
-        persistBlacklistedDynamicReducers: ReducerNames,
-        currentState: T | null = null
-    ): Reducer {
-        const reducerNames = Object.keys(reducers);
-        const dynamicReducerNames = Object.keys(dynamicReducers);
-
-        Object.keys(currentState || this.initialState).forEach((item: string): void => {
-            if (reducerNames.indexOf(item) === -1) {
-                // eslint-disable-next-line @typescript-eslint/ban-types
-                reducers[item] = (state = null): {} => state;
-            }
-        });
-
-        Object.keys((currentState && currentState.dynamic) || {}).forEach((item: string) => {
-            if (dynamicReducerNames.indexOf(item) === -1) {
-                // eslint-disable-next-line @typescript-eslint/ban-types
-                dynamicReducers[item] = (state = null): {} => state;
-            }
-        });
-
-        if (dynamicReducerNames.length > 0) {
-            reducers.dynamic = persistReducer(
-                {
-                    ...this.persistConfig,
-                    key: `${this.persistConfig.key}.dynamic`,
-                    whitelist: undefined,
-                    blacklist: persistBlacklistedDynamicReducers,
-                },
-                combineReducers(dynamicReducers)
-            );
-        }
-
-        return combineReducers(reducers);
-    }
+    return combineReducers(reducers);
+  }
 }

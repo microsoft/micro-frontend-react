@@ -3,6 +3,6 @@ import { CustomProperties } from '../../Models';
 import { RouteProps } from 'react-router-dom';
 
 export interface IRouteComponentProviderProps extends IComponentProviderProps, RouteProps {
-    isExact?: boolean;
-    data?: CustomProperties;
+  isExact?: boolean;
+  data?: CustomProperties;
 }
