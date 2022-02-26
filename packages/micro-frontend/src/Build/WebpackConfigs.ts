@@ -154,6 +154,18 @@ module.exports = (options: BuildConfigOptions) => {
         modules: [path.resolve(options.cwd, 'node_modules'), 'node_modules'],
         fallback: { buffer: require.resolve('buffer/') },
       },
+      devServer: hasHostEntries
+        ? undefined
+        : {
+            compress: true,
+            port: options.devServer?.devServerPort ?? 9000,
+            historyApiFallback: true,
+            https: options.devServer?.useHttps ?? false,
+            devMiddleware: {
+              writeToDisk: true,
+            },
+            open: options.devServer?.openBrowser ?? false,
+          },
     });
   }
 
