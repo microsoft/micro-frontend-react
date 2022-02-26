@@ -1,8 +1,7 @@
 export interface IComponentConfig {
-    id?: string;
-    fileName?: string;
-    name: string;
-    script: string;
-    usageFeatureName?: string;
-    common?: string;
+  id?: string;
+  fileName?: string;
+  name: string;
+  script: string;
+  common?: string;
 }

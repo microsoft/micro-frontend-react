@@ -5,21 +5,21 @@ import { IUser } from './IUser';
  */
 
 export interface IAuthClient {
-    readonly authContext: unknown;
+  readonly authContext: unknown;
 
-    login(loginOptions?: ILoginOptions): Promise<void>;
+  login(loginOptions?: ILoginOptions): Promise<void>;
 
-    logOut(): Promise<void>;
+  logOut(): Promise<void>;
 
-    getUser(): Promise<IUser | null>;
+  getUser(): Promise<IUser | null>;
 
-    getUserId(): Promise<string | null>;
+  getUserId(): Promise<string | null>;
 
-    isLoggedIn(): Promise<boolean>;
+  isLoggedIn(): Promise<boolean>;
 
-    acquireToken(resourceOrScopes: string | string[]): Promise<string | null>;
+  acquireToken(resourceOrScopes: string | string[]): Promise<string | null>;
 }
 
 export interface ILoginOptions {
-    scopes?: string[];
+  scopes?: string[];
 }
