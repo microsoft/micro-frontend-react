@@ -69,7 +69,7 @@ lib/
 debug/
 bin/
 bundles/
-public/index.html
+**/public/index.html
 
 # editor specific
 .idea

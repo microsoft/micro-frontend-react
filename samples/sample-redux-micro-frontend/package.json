@@ -1,0 +1,15 @@
+{
+  "name": "@microsoft/micro-frontend-sample-redux-micro-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve:redux": "webpack-dev-server"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/micro-frontend": "1.0.0",
+    "@microsoft/micro-frontend-redux": "1.0.0"
+  }
+}
