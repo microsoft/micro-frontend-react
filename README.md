@@ -4,7 +4,9 @@ This is an open source library that shares a set of utilities that can be used t
 
 While the proper documentation is being prepared, please see the following samples:
 
-* [Host application](https://github.com/microsoft/microfrontend/blob/main/packages/sample-host/src/App.tsx)
+## React.js
+
+* [Host application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-host/src/App.tsx)
   * The host application provides core clients web application (IAuthClient, ITelemetryClient, IHttpClient, etc). These clients are injected into Micro-Frontends when they are mounted
   * The host application loads Micro-Frontend applications using `RouteComponentProvider` or `ComponentProvider` with runtime configuration
     ``` tsx
@@ -25,9 +27,16 @@ While the proper documentation is being prepared, please see the following sampl
       }}
     />
     ```
-* [Micro-Frontend application](https://github.com/microsoft/microfrontend/blob/main/packages/sample-micro-frontend/src/MicroFrontendApp.tsx)
+* [Micro-Frontend application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-micro-frontend/src/MicroFrontendApp.tsx)
   * Micro-Frontends are components that are developed and deployed in isolation
   * Micro-Frontends will receive the core clients provided the Host application as props when mounted. Using `withContext` HOC utility, the core clients are added to your Micro-Frontend's context, so it can be accessed anywhere from the component hierarchy. 
+
+## React.js with Redux
+* [Host application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-redux-host/src/App.tsx)
+  * Setup host application with various redux extensions such as redux-sagas, redux-logger, redux-persist
+* [Micro-Frontend application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-redux-micro-frontend/src/MicroFrontendApp.tsx)
+  * Retrieve data from host application's Redux store
+  * Register new reducer and saga to the host application's Redux store
 
 ## Contributing
 
