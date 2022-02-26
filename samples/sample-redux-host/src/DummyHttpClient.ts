@@ -13,7 +13,7 @@ export class DummyHttpClient implements IHttpClient {
     request?: IHttpClientRequest,
     options?: IHttpClientRequestOption
   ): Promise<IHttpClientResult<T>> {
-    const response = await fetch(request.url);
+    const response = await fetch(url);
 
     return {
       status: response.status,
