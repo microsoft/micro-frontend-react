@@ -1,14 +1,5 @@
 import * as React from 'react';
-import { IComponentContext, IStoreBuilderResult } from './index';
-import { History } from 'history';
+import { IComponentContext } from './index';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type ShellProps = React.PropsWithChildren<any>;
+export type ShellProps = React.PropsWithChildren<IComponentContext>;
 export type ShellComponentType = React.ComponentType<ShellProps>;
-
-export interface IShellProps<T> {
-    store: IStoreBuilderResult<T>;
-    history: History;
-    context: IComponentContext;
-    appName: string;
-}

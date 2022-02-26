@@ -69,7 +69,7 @@ lib/
 debug/
 bin/
 bundles/
-ocv/
+public/index.html
 
 # editor specific
 .idea

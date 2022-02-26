@@ -8,6 +8,8 @@ export function withStore<T>(
 ): (WrappedComponent: ShellComponentType) => React.ComponentType {
   const { store, context, ...otherResults } = storeBuilderResult;
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return (WrappedComponent: React.ComponentType): React.ComponentType => {
     const ComponentWithStore: React.ComponentType = (
       // eslint-disable-next-line @typescript-eslint/ban-types

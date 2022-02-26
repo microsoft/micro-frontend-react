@@ -1,19 +1,27 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "moduleResolution": "node",
-        "module": "esnext",
-        "jsx": "react",
-        "strict": true,
-        "declaration": true,
-        "outDir": "./packages/micro-frontend/lib",
-        "sourceMap": true,
-        "skipLibCheck": true,
-        "typeRoots": ["./node_modules/@types"]
-    },
-    "exclude": ["node_modules", "__tests__", "__mocks__", "docs",
-        "packages/micro-frontend/lib", "samples"],
-    "include": [
-        "./packages/micro-frontend/src"
+  "compilerOptions": {
+    "target": "es6",
+    "moduleResolution": "node",
+    "module": "esnext",
+    "jsx": "react",
+    "strict": true,
+    "declaration": true,
+    "outDir": "./packages/micro-frontend/lib",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@types"
     ]
+  },
+  "exclude": [
+    "node_modules",
+    "__tests__",
+    "__mocks__",
+    "docs",
+    "packages/micro-frontend/lib",
+    "samples"
+  ],
+  "include": [
+    "./packages/micro-frontend/src"
+  ]
 }
