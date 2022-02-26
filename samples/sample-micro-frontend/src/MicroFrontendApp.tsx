@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { ComponentContext } from '@microsoft/micro-frontend/lib/ComponentContext';
 import { IUser } from '@microsoft/micro-frontend/lib/Models';
 import { withContext } from '@microsoft/micro-frontend/lib/withContext';
-import * as React from 'react';
 
 const Root = styled.div`
   display: block;
