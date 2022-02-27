@@ -1,7 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "@microsoft/micro-frontend": {
+    "@microsoft/micro-frontend-react": {
       "root": "packages/micro-frontend",
       "projectType": "library",
       "implicitDependencies": []
