@@ -30,4 +30,9 @@ module.exports = generateBuildConfig({
     openBrowser,
   },
   globalVariables,
+  externalScripts: [
+    'https://ee.azureedge.net/react/17.0.2/react.production.min.js',
+    'https://ee.azureedge.net/react/17.0.2/react-is.production.min.js',
+    'https://ee.azureedge.net/react/17.0.2/react-dom.production.min.js',
+  ],
 });
