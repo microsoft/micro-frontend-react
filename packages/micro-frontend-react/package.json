@@ -1,0 +1,24 @@
+{
+  "name": "@microsoft/micro-frontend-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Microsoft",
+  "license": "MIT",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "react": "^17.0.2"
+  },
+  "peerDependencies": {
+    "webpack": "^5.69.1"
+  }
+}
