@@ -6,6 +6,7 @@ module.exports = {
     serve: ['^serve'],
     'serve:redux': ['^serve:redux'],
     clean: ['^clean'],
+    release: ['^release'],
   },
   npmClient: 'yarn',
 };

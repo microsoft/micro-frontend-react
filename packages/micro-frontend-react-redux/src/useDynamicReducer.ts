@@ -1,7 +1,7 @@
 import { useLayoutEffect, useContext, Context as ReactContext } from 'react';
 import { Reducer } from 'redux';
 import { Saga } from 'redux-saga';
-import { Context } from '@microsoft/micro-frontend-react/lib/Context';
+import { Context } from '@micro-frontend-react/core/lib/Context';
 import { IReduxContext } from './IReduxContext';
 
 export function useDynamicReducer(

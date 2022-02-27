@@ -1,13 +1,14 @@
 {
-  "name": "@microsoft/microfrontend-repo",
+  "name": "@micro-frontend-react/repo",
   "version": "1.0.0",
   "description": "> This repo has been populated by an initial template to help get you started. Please > make sure to update the content to build a great experience for community-building.",
   "scripts": {
-    "prebuild": "lerna run build --scope=@microsoft/micro-frontend-react",
+    "prebuild": "lerna run build --scope=@micro-frontend-react/core",
     "build": "lage build --no-cache",
     "serve": "lage serve",
     "serve:redux": "lage serve:redux",
-    "clean": "lage clean --no-cache"
+    "clean": "lage clean --no-cache",
+    "release": "lage release --no-cache"
   },
   "repository": {
     "type": "git",

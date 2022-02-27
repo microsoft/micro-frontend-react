@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Context, withContext } from '@microsoft/micro-frontend-react/lib/Context';
+import { Context, withContext } from '@micro-frontend-react/core/lib/Context';
 
 function MicroFrontendApp(): React.ReactElement {
   const { userProvider } = React.useContext(

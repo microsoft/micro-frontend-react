@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Context } from '@microsoft/micro-frontend-react/lib/Context';
-import { ComponentProvider } from '@microsoft/micro-frontend-react/lib/ComponentProvider';
+import { Context } from '@micro-frontend-react/core/lib/Context';
+import { ComponentProvider } from '@micro-frontend-react/core/lib/ComponentProvider';
 
 export function Home(): React.ReactElement {
   const { userProvider } = React.useContext(
