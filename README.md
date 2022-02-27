@@ -6,9 +6,9 @@ While the proper documentation is being prepared, please see the following sampl
 
 ## React.js
 
-* [Host application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-host/src/App.tsx)
-  * The host application provides core clients web application (IAuthClient, ITelemetryClient, IHttpClient, etc). These clients are injected into Micro-Frontends when they are mounted
-  * The host application loads Micro-Frontend applications using `RouteComponentProvider` or `ComponentProvider` with runtime configuration
+* [Host application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-react-host/src/App.tsx)
+  * The host application provides shared "Context"
+  * The host application loads Micro-Frontend applications using or `ComponentProvider` with runtime configuration
     ``` tsx
     // Load a micro-frontend anywhere on the screen
     <ComponentProvider
@@ -17,24 +17,16 @@ While the proper documentation is being prepared, please see the following sampl
         name: 'MicroFrontendApp',
       }}
     />
-
-    // Load a component in place of React Router route
-    <RouteComponentProvider
-      path="/micro-frontend"
-      config={{
-        script: 'http://localhost:8000/bundles/micro-frontend-app.js',
-        name: 'MicroFrontendApp',
-      }}
-    />
     ```
-* [Micro-Frontend application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-micro-frontend/src/MicroFrontendApp.tsx)
+* [Micro-Frontend application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-react-micro-frontend/src/MicroFrontendApp.tsx)
   * Micro-Frontends are components that are developed and deployed in isolation
-  * Micro-Frontends will receive the core clients provided the Host application as props when mounted. Using `withContext` HOC utility, the core clients are added to your Micro-Frontend's context, so it can be accessed anywhere from the component hierarchy. 
+  * Micro-Frontends will receive receive the "Context" when mounted
 
 ## React.js with Redux
-* [Host application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-redux-host/src/App.tsx)
+* [Host application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-react-redux-host/src/App.tsx)
   * Setup host application with various redux extensions such as redux-sagas, redux-logger, redux-persist
-* [Micro-Frontend application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-redux-micro-frontend/src/MicroFrontendApp.tsx)
+  * Host's "Context" now includes utilities for Redux operations
+* [Micro-Frontend application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-react-redux-micro-frontend/src/MicroFrontendApp.tsx)
   * Retrieve data from host application's Redux store
   * Register new reducer and saga to the host application's Redux store
 
