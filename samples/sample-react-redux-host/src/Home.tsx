@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ComponentProvider } from '@microsoft/micro-frontend-react/lib/ComponentProvider';
-import { Context } from '@microsoft/micro-frontend-react/lib/Context';
-import { IReduxContext } from '@microsoft/micro-frontend-react-redux/lib/IReduxContext';
+import { ComponentProvider } from '@micro-frontend-react/core/lib/ComponentProvider';
+import { Context } from '@micro-frontend-react/core/lib/Context';
+import { IReduxContext } from '@micro-frontend-react/redux/lib/IReduxContext';
 import { AppState } from './App';
 
 export function Home(): React.ReactElement {

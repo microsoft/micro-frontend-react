@@ -1,7 +1,7 @@
 {
-  "name": "@microsoft/micro-frontend-sample-micro-frontend",
+  "name": "@micro-frontend-react/sample-react-micro-frontend",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@microsoft/micro-frontend-react": "1.0.0"
+    "@micro-frontend-react/core": "^1.0.0-alpha.0"
   }
 }

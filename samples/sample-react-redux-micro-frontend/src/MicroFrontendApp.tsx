@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Context, withContext } from '@microsoft/micro-frontend-react/lib/Context';
-import { IDefaultState } from '@microsoft/micro-frontend-react-redux/lib/IDefaultState';
-import { useDynamicReducer } from '@microsoft/micro-frontend-react-redux/lib/useDynamicReducer';
-import { IReduxContext } from '@microsoft/micro-frontend-react-redux/lib/IReduxContext';
+import { Context, withContext } from '@micro-frontend-react/core/lib/Context';
+import { IDefaultState } from '@micro-frontend-react/redux/lib/IDefaultState';
+import { useDynamicReducer } from '@micro-frontend-react/redux/lib/useDynamicReducer';
+import { IReduxContext } from '@micro-frontend-react/redux/lib/IReduxContext';
 import {
   MicroFrontendActionType,
   microFrontendReducer,
