@@ -9,7 +9,7 @@ export function Shell(props: React.PropsWithChildren<IEmployeeExperienceContext>
   return (
     <>
       <ShellStyles />
-      <Context.Provider value={{ context }}>{children}</Context.Provider>
+      <Context.Provider value={{ ...context }}>{children}</Context.Provider>
     </>
   );
 }

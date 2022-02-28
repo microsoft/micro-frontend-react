@@ -1,0 +1,21 @@
+{
+    "name": "generator-employee-experience",
+    "version": "4.0.0",
+    "description": "",
+    "author": "Microsoft Employee Experience Team",
+    "license": "UNLICENSED",
+    "files": [
+        "generators"
+    ],
+    "devDependencies": {
+        "husky": "^3.0.9"
+    },
+    "engines": {
+        "npm": ">= 4.0.0"
+    },
+    "dependencies": {
+        "chalk": "^2.4.2",
+        "yeoman-generator": "^4.2.0",
+        "yosay": "^2.0.2"
+    }
+}

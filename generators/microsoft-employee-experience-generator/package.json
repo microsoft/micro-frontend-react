@@ -1,0 +1,21 @@
+{
+  "name": "@micro-frontend-react/employee-experience-generator",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "yo:install": "npm --prefix ./yo install ./yo",
+    "yo:clean": "npx rimraf yo/generators/app/templates/examples",
+    "yo:copy": "npx copyfiles -a \"./examples/**/*\" \"./yo/generators/app/templates\" -e \"./examples/node_modules/**/*\" -e \"./examples/public/bundles/**/*\" -e \"./examples/public/ocv/**/*\"",
+    "yo:build": "npm run yo:clean && npm run yo:copy && npm --prefix ./yo link ./yo",
+    "examples:install": "npm --prefix ./examples install ./examples",
+    "examples:serve": "npm --prefix ./examples start ./examples",
+    "nuke": "npx rimraf **/node_modules **/package-lock.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://microsoftit.visualstudio.com/DefaultCollection/OneITVSO/_git/HR-HRX-EE-UXFrwk-Generator"
+  },
+  "author": "",
+  "license": "MIT License"
+}
