@@ -1,0 +1,35 @@
+{
+  "name": "@micro-frontend-react/employee-experience",
+  "version": "1.0.0-alpha.1",
+  "description": "Micro-Frontend React Extension for Microsoft Employee Experience Team",
+  "main": "index.js",
+  "author": "Microsoft",
+  "license": "MIT",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "tsc -p tsconfig.json",
+    "release": "npm publish"
+  },
+  "dependencies": {
+    "@micro-frontend-react/redux": "^1.0.0-alpha.1"
+  },
+  "peerDependencies": {
+    "@azure/msal-browser": ">= ^2.22.0 < 3",
+    "@fluentui/react": ">= ^8.56.1 < 9",
+    "@microsoft/applicationinsights-web": ">= ^2.7.3 < 3",
+    "axios": ">= ^0.26.0 < 1",
+    "react-is": ">= ^16.0.8 < 18",
+    "styled-components": ">= ^5.3.0 < 6",
+    "uuid": "^8.3.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

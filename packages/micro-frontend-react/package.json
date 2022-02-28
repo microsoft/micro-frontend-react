@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/core",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "",
   "main": "index.js",
   "author": "Microsoft",
@@ -16,11 +16,9 @@
     "build": "tsc -p tsconfig.json",
     "release": "npm publish"
   },
-  "dependencies": {
-    "react": "^17.0.2"
-  },
   "peerDependencies": {
-    "webpack": "^5.69.1"
+    "react": ">= 16 < 18",
+    "webpack": ">= ^5.69.1 < 6"
   },
   "publishConfig": {
     "access": "public",
