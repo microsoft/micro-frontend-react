@@ -1,6 +1,9 @@
 import { useContext, useState, useEffect, Context as ReactContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { INavLinkGroup as IBaseNavLinkGroup, INavLink as IBaseNavLink } from '@cseo/controls/lib/Nav';
+import {
+  INavLinkGroup as IBaseNavLinkGroup,
+  INavLink as IBaseNavLink,
+} from '@coherence-design-system/controls/lib/nav';
 import { Context } from '@micro-frontend-react/employee-experience/lib/Context';
 import { IEmployeeExperienceContext } from '@micro-frontend-react/employee-experience/lib/IEmployeeExperienceContext';
 import { shouldUseAnchorTag } from '@micro-frontend-react/employee-experience/lib/Link';

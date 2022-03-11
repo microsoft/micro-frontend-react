@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider } from '@fluentui/react/lib/Theme';
-import { loadTheme } from '@fluentui/style-utilities/lib/styles/theme';
+import { loadTheme } from '@fluentui/style-utilities';
 import { CoherenceCustomizations } from '@coherence-design-system/styles/lib/CoherenceCustomizations';
 import { CoherenceTheme } from '@coherence-design-system/styles';
 
