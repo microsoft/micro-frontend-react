@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/employee-experience",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Micro-Frontend React Extension for Microsoft Employee Experience Team",
   "main": "index.js",
   "author": "Microsoft",
