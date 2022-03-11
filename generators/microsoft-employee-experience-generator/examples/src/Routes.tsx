@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { RouteComponentProvider } from '@micro-frontend-react/employee-experience/lib/RouteComponentProvider';
 
 export function Routes(): React.ReactElement {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICoherenceHeaderProps } from '@cseo/controls/lib/header';
+import { ICoherenceHeaderProps } from '@coherence-design-system/controls/lib/header';
 
 export function useHeaderConfig(): ICoherenceHeaderProps {
   return {
