@@ -3,7 +3,7 @@ import * as Styled from '../Shared/Layout';
 import { Context, withContext } from '@micro-frontend-react/employee-experience/lib/Context';
 import { useDynamicReducer } from '@micro-frontend-react/employee-experience/lib/useDynamicReducer';
 import { IEmployeeExperienceContext } from '@micro-frontend-react/employee-experience/lib/IEmployeeExperienceContext';
-import { Persona, PersonaSize } from '@micro-frontend-react/employee-experience/lib/Persona';
+import { Persona } from '@micro-frontend-react/employee-experience/lib/Persona';
 import { usePageTracking } from '@micro-frontend-react/employee-experience/lib/usePageTracking';
 import { usePageTitle } from '@micro-frontend-react/employee-experience/lib/usePageTitle';
 import { getFeature, getPageLoadFeature } from '@micro-frontend-react/employee-experience/lib/UsageTelemetryHelper';
@@ -14,15 +14,14 @@ import {
 } from '../Shared/SharedExample.reducer';
 import { IExampleAppState } from '../Shared/SharedExample.types';
 import { sharedExampleSagas } from '../Shared/SharedExample.sagas';
-import { Reducer } from 'redux';
 import { requestMyProfile } from '../Shared/SharedExample.actions';
 
 function DynamicReduxHooks(): React.ReactElement {
-  const feature = getFeature('DemoApp', 'DynamicReduxHooks');
+  const feature = getFeature(__APP_NAME__, 'DynamicReduxHooks');
   usePageTracking(getPageLoadFeature(feature));
   usePageTitle(`Dynamic + Redux + Hooks - ${__APP_NAME__}`);
 
-  useDynamicReducer(sharedExampleReducerName, sharedExampleReducer as Reducer, [sharedExampleSagas]);
+  useDynamicReducer(sharedExampleReducerName, sharedExampleReducer, [sharedExampleSagas]);
 
   const { useSelector, dispatch } = React.useContext(Context as React.Context<IEmployeeExperienceContext>);
   const { profile, isLoading, hasError, errorMessage } = useSelector(
@@ -47,7 +46,7 @@ function DynamicReduxHooks(): React.ReactElement {
       {!isLoading && !hasError && profile && (
         <Persona
           emailAlias={profile.userPrincipalName}
-          size={PersonaSize.size100}
+          size={100}
           text={profile.displayName}
           secondaryText={profile.jobTitle}
           optionalText={profile.officeLocation}

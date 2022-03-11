@@ -2,7 +2,7 @@ import {
   INavLinkGroup as IBaseNavLinkGroup,
   INavLink as IBaseNavLink,
   INavProps as IBaseNavProps,
-} from '@cseo/controls/lib/nav';
+} from '@coherence-design-system/controls/lib/nav';
 
 export interface INavLink extends Omit<IBaseNavLink, 'links'> {
   links?: INavLink[];

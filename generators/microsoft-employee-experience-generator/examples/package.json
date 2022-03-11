@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@micro-frontend-react/employee-experience-generator-template",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "",
   "main": "index.js",
   "author": "Microsoft Employee Experience Team",
@@ -20,10 +20,11 @@
   "dependencies": {
     "@coherence-design-system/controls": "^4.0.3",
     "@coherence-design-system/styles": "^1.4.4",
-    "@fluentui/date-time-utilities": "^8.3.0",
-    "@fluentui/react": "^8.56.1",
+    "@fluentui/date-time-utilities": "^8.5.0",
+    "@fluentui/style-utilities": "^8.6.4",
+    "@fluentui/react": "^8.60.4",
     "@m365-admin/customizations": "^7.3.2",
-    "@micro-frontend-react/employee-experience": "../../../extensions/microsoft-employee-experience",
+    "@micro-frontend-react/employee-experience": "1.0.0-alpha.3",
     "@microsoft/myhub_webauth_sdk": "^0.0.1-Preview",
     "@ms-ofb/officebrowserfeedback": "^1.8.3",
     "@uifabric/charting": "^4.20.7",
