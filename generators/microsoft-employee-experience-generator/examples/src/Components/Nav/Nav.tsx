@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CoherenceNav } from '@cseo/controls/lib/nav';
+import { CoherenceNav } from '@coherence-design-system/controls/lib/nav';
 import { Context } from '@micro-frontend-react/employee-experience/lib/Context';
 import { UserEvent, EventType, UsageEventName } from '@micro-frontend-react/employee-experience/lib/UsageTelemetry';
 import { IEmployeeExperienceContext } from '@micro-frontend-react/employee-experience/lib/IEmployeeExperienceContext';

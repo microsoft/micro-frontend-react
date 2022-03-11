@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@micro-frontend-react/employee-experience-generator-template",
-  "version": "4.0.0",
+  "version": "1.0.0-alpha.2",
   "description": "",
   "main": "index.js",
   "author": "Microsoft Employee Experience Team",
@@ -18,20 +18,21 @@
     "postinstall": "npm run ocv"
   },
   "dependencies": {
-    "@cseo/controls": "^3.5.6",
-    "@cseo/styles": "^1.4.1",
+    "@coherence-design-system/controls": "^4.0.3",
+    "@coherence-design-system/styles": "^1.4.4",
     "@fluentui/date-time-utilities": "^8.3.0",
     "@fluentui/react": "^8.56.1",
-    "@micro-frontend-react/employee-experience": "../../MicroFrontend/extensions/microsoft-employee-experience",
+    "@m365-admin/customizations": "^7.3.2",
+    "@micro-frontend-react/employee-experience": "../../../extensions/microsoft-employee-experience",
+    "@microsoft/myhub_webauth_sdk": "^0.0.1-Preview",
     "@ms-ofb/officebrowserfeedback": "^1.8.3",
     "@uifabric/charting": "^4.20.7",
     "axios": "^0.26.0",
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.34",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.2",
@@ -39,8 +40,7 @@
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3",
     "styled-components": "^5.3.3",
-    "tslib": "^2.3.1",
-    "@microsoft/myhub_webauth_sdk": "^0.0.1-Preview"
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.16.8",

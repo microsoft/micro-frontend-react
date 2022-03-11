@@ -24,7 +24,7 @@
     "@fluentui/react": ">= ^8.56.1 < 9",
     "@microsoft/applicationinsights-web": ">= ^2.7.3 < 3",
     "axios": ">= ^0.26.0 < 1",
-    "react-is": ">= ^16.0.8 < 18",
+    "react-is": ">= ^17.0.2 < 18",
     "styled-components": ">= ^5.3.0 < 6",
     "uuid": "^8.3.2"
   },
