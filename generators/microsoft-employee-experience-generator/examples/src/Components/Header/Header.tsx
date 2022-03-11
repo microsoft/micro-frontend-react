@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HeaderRoot } from './Header.styled';
-import { CoherenceHeader } from '@cseo/controls/lib/header/CoherenceHeader';
+import { CoherenceHeader } from '@coherence-design-system/controls/lib/header/CoherenceHeader';
 import {
   SearchSettings,
   ICoherenceHeaderProps,
@@ -8,7 +8,7 @@ import {
   FarRightSettingsPanelProps,
   FarRightFeedbackPanelProps,
   FarRightProfilePanelProps,
-} from '@cseo/controls/lib/header/CoherenceHeader.types';
+} from '@coherence-design-system/controls/lib/header/CoherenceHeader.types';
 import { useUser } from '@micro-frontend-react/employee-experience/lib/useUser';
 import { useGraphPhoto } from '@micro-frontend-react/employee-experience/lib/useGraphPhoto';
 import { Context } from '@micro-frontend-react/employee-experience/lib/Context';
@@ -133,7 +133,6 @@ export function Header(props: ICoherenceHeaderProps): React.ReactElement {
           feedbackSettings: feedbackConfig,
           profileSettings: profileConfig,
         }}
-        telemetryHook={telemetryClient}
       />
     </HeaderRoot>
   );

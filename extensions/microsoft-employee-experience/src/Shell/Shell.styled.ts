@@ -41,8 +41,6 @@ export const ShellStyles = createGlobalStyle`
 
     #app {
         height: 100%;
-        display: flex;
-        flex-direction: column;
     }
 
     @keyframes placeholderBlinks {
