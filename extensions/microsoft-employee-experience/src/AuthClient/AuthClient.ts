@@ -80,7 +80,9 @@ export class AuthClient implements IAuthClient {
       if (this.options.onLogout) this.options.onLogout();
 
       try {
-        await this.authContext.loginRedirect();
+        await this.authContext.logoutRedirect({
+          account: this.account,
+        });
         resolve();
       } catch (ex) {
         if (this.options.onLogoutFailed) this.options.onLogoutFailed();

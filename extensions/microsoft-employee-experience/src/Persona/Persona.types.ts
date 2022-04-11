@@ -1,7 +1,4 @@
-import {
-  IPersonaProps as IFabricPersonaProps,
-  PersonaInitialsColor,
-} from '@fluentui/react/lib/components/Persona/Persona.types';
+import { IPersonaProps as IFabricPersonaProps, PersonaInitialsColor } from '@fluentui/react/lib/Persona';
 
 export interface IPersonaProps extends IFabricPersonaProps {
   emailAlias?: string;

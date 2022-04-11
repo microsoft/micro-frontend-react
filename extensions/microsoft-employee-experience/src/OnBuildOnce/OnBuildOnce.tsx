@@ -1,5 +1,6 @@
+import { PropsWithChildren } from 'react';
 import * as React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { IAuthClient } from '../IAuthClient';
 import { ITelemetryClient } from '../ITelemetryClient';
@@ -32,14 +33,17 @@ export function OnBuildOnce(Component: React.ComponentType, options: BuildOnceAp
     })
     .build();
 
-  const ShellWithStore = withStore(storeResult)(Shell);
+  const ShellWithStore: React.ComponentType<PropsWithChildren<unknown>> = withStore(storeResult)(Shell);
+  const container = document.getElementById('app');
+  if (!container) return;
 
-  render(
+  const root = createRoot(container);
+
+  root.render(
     <ShellWithStore>
       <BrowserRouter>
         <Component />
       </BrowserRouter>
-    </ShellWithStore>,
-    document.getElementById('app')
+    </ShellWithStore>
   );
 }
