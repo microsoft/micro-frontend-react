@@ -14,7 +14,7 @@ import {
 } from '../Shared/SharedExample.reducer';
 import { sharedExampleSagas } from '../Shared/SharedExample.sagas';
 import { IExampleAppState } from '../Shared/SharedExample.types';
-import { Persona, PersonaSize } from '../../Components/Persona';
+import { Persona, PersonaSize } from '@micro-frontend-react/employee-experience/lib/Persona';
 
 function DynamicReduxHooks(): React.ReactElement {
   const feature = getFeature(__APP_NAME__, 'DynamicReduxHooks');

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Persona as FabricPersona } from '@fluentui/react/lib/Persona';
-import { GraphPhotoSize } from '@micro-frontend-react/employee-experience/lib/IGraphClient';
+import { GraphPhotoSize } from '../IGraphClient';
 import { IPersonaProps, PersonaSize } from './Persona.types';
-import { useGraphPhoto } from '@micro-frontend-react/employee-experience/lib/useGraphPhoto';
+import { useGraphPhoto } from '../useGraphPhoto';
 
 export const Persona: React.FC<IPersonaProps> = (props: IPersonaProps): React.ReactElement => {
   const { emailAlias } = props;
