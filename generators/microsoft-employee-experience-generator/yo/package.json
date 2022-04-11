@@ -1,6 +1,6 @@
 {
-    "name": "generator-employee-experience",
-    "version": "4.0.0",
+    "name": "@micro-frontend-react/generator-employee-experience",
+    "version": "1.0.0-alpha.0",
     "description": "",
     "author": "Microsoft Employee Experience Team",
     "license": "UNLICENSED",
@@ -17,5 +17,9 @@
         "chalk": "^5.0.0",
         "yeoman-generator": "^5.6.1",
         "yosay": "^2.0.2"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     }
 }

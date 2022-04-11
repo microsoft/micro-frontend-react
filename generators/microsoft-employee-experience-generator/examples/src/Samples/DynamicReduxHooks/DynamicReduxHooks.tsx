@@ -14,6 +14,7 @@ import {
 } from '../Shared/SharedExample.reducer';
 import { sharedExampleSagas } from '../Shared/SharedExample.sagas';
 import { IExampleAppState } from '../Shared/SharedExample.types';
+import { Persona, PersonaSize } from '@micro-frontend-react/employee-experience/lib/Persona';
 
 function DynamicReduxHooks(): React.ReactElement {
   const feature = getFeature(__APP_NAME__, 'DynamicReduxHooks');
@@ -44,6 +45,7 @@ function DynamicReduxHooks(): React.ReactElement {
       {hasError && errorMessage}
       {!isLoading && !hasError && profile && (
         <div>
+          <Persona size={PersonaSize.size100} />
           <div>Name: {profile.displayName}</div>
           <div>title: {profile.jobTitle}</div>
         </div>

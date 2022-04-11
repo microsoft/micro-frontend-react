@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/core",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "author": "Microsoft",
@@ -17,7 +17,7 @@
     "release": "npm publish"
   },
   "peerDependencies": {
-    "react": ">= 16 < 18",
+    "react": ">= 16 < 19",
     "webpack": ">= ^5.69.1 < 6"
   },
   "publishConfig": {
