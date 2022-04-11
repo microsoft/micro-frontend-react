@@ -17,7 +17,7 @@ export function withButtonClickLogging<T extends object>(
       Context as React.Context<IEmployeeExperienceContext>
     );
     const handleClicked = React.useCallback(
-      (e): void => {
+      (e: never): void => {
         const buttonEvent: UserEvent = {
           type: EventType.User,
           eventName: UsageEventName.ButtonClicked,
