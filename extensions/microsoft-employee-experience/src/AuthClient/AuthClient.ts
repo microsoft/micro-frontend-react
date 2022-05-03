@@ -11,12 +11,12 @@ import { ILoginOptions, IAuthClient } from '../IAuthClient';
 import { IUser } from '../IUser';
 import { IIDTokenClaim, IAuthClientOptions } from './AuthClient.types';
 
-export class AuthClient implements IAuthClient {
+export class AuthClient<T extends IUser> implements IAuthClient<T> {
   public readonly authContext: PublicClientApplication;
   private readonly config: Configuration;
   private readonly telemetryClient: ITelemetryClient;
   private account: AccountInfo | null = null;
-  private readonly options: IAuthClientOptions;
+  private readonly options: IAuthClientOptions<T>;
 
   // Tracks whether there has been another login request during login redirect
   // If another login is called before login redirect is completed,
@@ -29,9 +29,9 @@ export class AuthClient implements IAuthClient {
     [key: string]: ((token: string) => void)[];
   } = {};
   // Tracks all getUser requests made during login redirection
-  private getUserRequests: ((user: IUser | null) => void)[] = [];
+  private getUserRequests: ((user: T | null) => void)[] = [];
 
-  public constructor(config: Configuration, telemetryClient: ITelemetryClient, options?: IAuthClientOptions) {
+  public constructor(config: Configuration, telemetryClient: ITelemetryClient, options?: IAuthClientOptions<T>) {
     this.telemetryClient = telemetryClient;
     this.config = config;
     this.authContext = new PublicClientApplication({
@@ -91,11 +91,11 @@ export class AuthClient implements IAuthClient {
     });
   }
 
-  public getUser(): Promise<IUser | null> {
+  public getUser(): Promise<T | null> {
     return new Promise(async (resolve): Promise<void> => {
       if (this.isRedirectComplete) {
         const user = await this.getUserInner();
-        resolve(user);
+        resolve(user as T);
       } else {
         this.addGetUserRequest(resolve);
       }
@@ -156,7 +156,7 @@ export class AuthClient implements IAuthClient {
     this.flushGetUserRequests();
   }
 
-  private getUserInner(): Promise<IUser | null> {
+  private getUserInner(): Promise<T | null> {
     return new Promise((resolve, reject): void => {
       try {
         const user = this.getCachedUser();
@@ -165,12 +165,18 @@ export class AuthClient implements IAuthClient {
           return;
         }
 
+        if (this.options.onGetUser) {
+          resolve(this.options.onGetUser(user));
+
+          return;
+        }
+
         resolve({
           id: user.username,
           email: user.username,
           name: user.name || this.getNameFromIdToken(user.idTokenClaims as IIDTokenClaim) || '',
           oid: user.homeAccountId,
-        });
+        } as T);
       } catch (ex) {
         reject(ex);
       }
@@ -212,7 +218,7 @@ export class AuthClient implements IAuthClient {
     return normalizedScopes;
   }
 
-  private addGetUserRequest(callback: (user: IUser | null) => void) {
+  private addGetUserRequest(callback: (user: T | null) => void) {
     this.getUserRequests.push(callback);
   }
 

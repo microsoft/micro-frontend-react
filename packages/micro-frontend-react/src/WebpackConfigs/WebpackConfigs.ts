@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 var path = require('path');
 var Webpack = require('webpack');
 var { stringifyConfigValues, generateHTMLFile, generateDevServerSettings } = require('./WebpackConfigs.utils');
@@ -11,6 +12,8 @@ type DevServerConfig = {
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ModuleRules = any[];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Plugins = any[];
 type Externals = { [key: string]: string };
 type ExternalScripts = string[];
 
@@ -21,6 +24,7 @@ type BuildConfigOptions = {
   devServer?: DevServerConfig;
   globalVariables: GlobalVariables;
   moduleRules?: ModuleRules;
+  plugins?: Plugins;
   externals?: Externals;
   externalScripts?: ExternalScripts;
 };
@@ -65,7 +69,7 @@ module.exports = (options: BuildConfigOptions) => {
         modules: [path.resolve(options.cwd, 'node_modules'), 'node_modules'],
         fallback: { buffer: require.resolve('buffer/') },
       },
-      plugins: [new Webpack.DefinePlugin(stringifyConfigValues(options.globalVariables))],
+      plugins: [new Webpack.DefinePlugin(stringifyConfigValues(options.globalVariables)), ...(options.plugins || [])],
       devServer: generateDevServerSettings(options.devServer),
     });
   }
@@ -102,7 +106,7 @@ module.exports = (options: BuildConfigOptions) => {
         libraryTarget: 'umd',
         publicPath: `${options.globalVariables.__BASE_URL__}/bundles/`,
       },
-      plugins: [new Webpack.DefinePlugin(stringifyConfigValues(options.globalVariables))],
+      plugins: [new Webpack.DefinePlugin(stringifyConfigValues(options.globalVariables)), ...(options.plugins || [])],
       resolve: {
         extensions: ['.ts', '.tsx', '.js'],
         modules: [path.resolve(options.cwd, 'node_modules'), 'node_modules'],
