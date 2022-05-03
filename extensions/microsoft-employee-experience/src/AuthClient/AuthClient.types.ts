@@ -1,12 +1,13 @@
 import { AccountInfo } from '@azure/msal-browser';
 
-export interface IAuthClientOptions {
+export interface IAuthClientOptions<T> {
   onLogin?(): void;
   onLoginFailed?(): void;
   onLogout?(): void;
   onLogoutFailed?(): void;
   onMultipleAccountFound?: (users: AccountInfo[]) => AccountInfo;
   onAcquireTokenError?: (e: Error, scopes: string | string[]) => void;
+  onGetUser?: (token: AccountInfo) => T;
 }
 
 export interface IIDTokenClaim {

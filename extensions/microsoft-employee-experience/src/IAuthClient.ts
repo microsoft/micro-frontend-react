@@ -1,13 +1,13 @@
 import { IUser } from './IUser';
 
-export interface IAuthClient {
+export interface IAuthClient<T = IUser> {
   readonly authContext: unknown;
 
   login(loginOptions?: ILoginOptions): Promise<void>;
 
   logOut(): Promise<void>;
 
-  getUser(): Promise<IUser | null>;
+  getUser(): Promise<T | null>;
 
   getUserId(): Promise<string | null>;
 

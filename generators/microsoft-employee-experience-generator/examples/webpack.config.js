@@ -36,15 +36,10 @@ const microFrontendEntries = {
   'dynamic-route-param-consumer': './src/Samples/DynamicSubRoutes/DynamicRouteParamConsumer.tsx',
 };
 
-const buildOnceEntries = {
-  TestBuildOnceApp: './src/Samples/DynamicReduxHooks/DynamicReduxHookOnBuildOnce.tsx',
-};
-
 module.exports = generateBuildConfig({
   cwd: __dirname,
   hostEntries,
   microFrontendEntries,
-  buildOnceEntries,
   devServer: {
     devServerPort,
     useHttps,
