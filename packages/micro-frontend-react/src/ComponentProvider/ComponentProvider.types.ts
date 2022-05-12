@@ -23,6 +23,8 @@ export interface IComponentProviderProps {
   renderError?(): React.ReactElement;
 
   renderPlaceholder?(): React.ReactElement;
+
+  data?: Record<string, unknown>;
 }
 
 export interface IComponentProviderState {

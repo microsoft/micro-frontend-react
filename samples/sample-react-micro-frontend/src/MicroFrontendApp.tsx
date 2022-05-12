@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Context, withContext } from '@micro-frontend-react/core/lib/Context';
 
 function MicroFrontendApp(): React.ReactElement {
-  const { userProvider } = React.useContext(
+  const { userProvider, customData } = React.useContext(
     Context as React.Context<{
       userProvider: { getUserName(): string };
+      customData?: string;
     }>
   );
   const [userName, setUserName] = React.useState<string>('Guest');
@@ -20,7 +21,8 @@ function MicroFrontendApp(): React.ReactElement {
         backgroundColor: '#ff6384',
       }}
     >
-      Hello, {userName} from {__APP_NAME__}!
+      Hello, {userName} from {__APP_NAME__}
+      {customData ? ` with ${customData}` : ''}!
     </div>
   );
 }

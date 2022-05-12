@@ -47,13 +47,19 @@ export class ComponentProvider extends React.Component<IComponentProviderProps, 
   }
 
   public render(): React.ReactElement | null {
-    const { renderError, renderPlaceholder, config, ...otherProps } = this.props;
+    const { renderError, renderPlaceholder, config, data, ...otherProps } = this.props;
     const { Component, hasError } = this.state;
 
     if (hasError) return renderError ? renderError() : null;
     if (!Component) return renderPlaceholder ? renderPlaceholder() : null;
 
-    return <Component context={this.context} config={config} {...otherProps} />;
+    return (
+      <Component
+        context={{ ...(this.context as Record<string, unknown>), ...(data || {}) }}
+        config={config}
+        {...otherProps}
+      />
+    );
   }
 
   private shouldReload(prevConfig: IComponentConfig): boolean {
