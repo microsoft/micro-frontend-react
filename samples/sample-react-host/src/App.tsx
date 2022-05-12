@@ -21,6 +21,9 @@ export function App(): React.ReactElement {
               script: 'http://localhost:8000/bundles/micro-frontend-app.js',
               name: 'MicroFrontendApp',
             }}
+            data={{
+              customData: 'custom data',
+            }}
           />
         )}
       />
