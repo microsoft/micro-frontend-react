@@ -55,7 +55,7 @@ export class ComponentProvider extends React.Component<IComponentProviderProps, 
 
     return (
       <Component
-        context={{ ...(this.context as Record<string, unknown>), ...(data || {}) }}
+        context={{ ...(this.context as Record<string, unknown>), ...((data as any) || {}) }}
         config={config}
         {...otherProps}
       />

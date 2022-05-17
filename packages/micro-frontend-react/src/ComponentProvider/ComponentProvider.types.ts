@@ -13,6 +13,7 @@ export interface IDuplicateRequestHandlers {
 
 export interface IComponentProviderProps {
   config: IComponentConfig;
+  data?: unknown;
 
   onLoad?(config: IComponentConfig): void;
 
@@ -23,8 +24,6 @@ export interface IComponentProviderProps {
   renderError?(): React.ReactElement;
 
   renderPlaceholder?(): React.ReactElement;
-
-  data?: Record<string, unknown>;
 }
 
 export interface IComponentProviderState {

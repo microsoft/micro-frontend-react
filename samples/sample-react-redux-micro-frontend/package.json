@@ -1,7 +1,7 @@
 {
   "name": "@micro-frontend-react/sample-react-redux-micro-frontend",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@micro-frontend-react/redux": "^1.0.2"
+    "@micro-frontend-react/redux": "^1.0.3"
   }
 }
