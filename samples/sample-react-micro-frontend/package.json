@@ -1,7 +1,7 @@
 {
   "name": "@micro-frontend-react/sample-react-micro-frontend",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@micro-frontend-react/core": "^1.0.3"
+    "@micro-frontend-react/core": "^1.0.4"
   }
 }
