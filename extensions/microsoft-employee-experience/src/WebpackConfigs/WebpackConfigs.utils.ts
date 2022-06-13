@@ -1,5 +1,5 @@
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   stringifyConfigValues: (config: { [key: string]: any }) => {
@@ -11,7 +11,13 @@ module.exports = {
     return result;
   },
 
-  generateHTMLFile: (cwd: string, fileName: string, externalScripts: string[] = [], isBuildOnce = false) => {
+  generateHTMLFile: (
+    cwd: string,
+    fileName: string,
+    externalScripts: string[] = [],
+    styles = '',
+    isBuildOnce = false
+  ) => {
     const basePath = path.join(cwd, 'public', isBuildOnce ? `buildonce` : '');
 
     fs.mkdirSync(basePath, { recursive: true });
@@ -23,6 +29,7 @@ module.exports = {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>${styles}</style>
     </head>
     <body>
         <div id="app"></div>

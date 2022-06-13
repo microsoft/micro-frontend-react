@@ -1,6 +1,6 @@
-var path = require('path');
-var Webpack = require('webpack');
-var { stringifyConfigValues, generateHTMLFile, generateDevServerSettings } = require('./WebpackConfigs.utils');
+const path = require('path');
+const Webpack = require('webpack');
+const { stringifyConfigValues, generateHTMLFile, generateDevServerSettings } = require('./WebpackConfigs.utils');
 
 type GlobalVariables = { [key: string]: string | number | boolean };
 type EntryConfig = { [key: string]: string };
@@ -24,6 +24,7 @@ type BuildConfigOptions = {
   moduleRules?: ModuleRules;
   externals?: Externals;
   externalScripts?: ExternalScripts;
+  styles?: string;
 };
 
 module.exports = (options: BuildConfigOptions) => {
@@ -32,7 +33,7 @@ module.exports = (options: BuildConfigOptions) => {
   const hasHostEntries = !!options.hostEntries && Object.keys(options.hostEntries).length > 0;
   if (hasHostEntries) {
     if (Object.keys(options.hostEntries!).length > 1) throw new Error('There can be only one host app.');
-    generateHTMLFile(options.cwd, Object.keys(options.hostEntries!)[0], options.externalScripts);
+    generateHTMLFile(options.cwd, Object.keys(options.hostEntries!)[0], options.externalScripts, options.styles);
 
     webpackConfigs.push({
       name: 'static',
@@ -119,7 +120,7 @@ module.exports = (options: BuildConfigOptions) => {
 
   if (!!options.buildOnceEntries && Object.keys(options.buildOnceEntries).length > 0) {
     Object.keys(options.buildOnceEntries).forEach((p) => {
-      generateHTMLFile(options.cwd, p, options.externalScripts, true);
+      generateHTMLFile(options.cwd, p, options.externalScripts, options.styles, true);
     });
 
     webpackConfigs.push({
