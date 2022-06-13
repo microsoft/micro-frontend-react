@@ -1,5 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+/* eslint-disable no-var */
+var fs = require('fs');
+var path = require('path');
 
 module.exports = {
   stringifyConfigValues: (config: { [key: string]: any }) => {

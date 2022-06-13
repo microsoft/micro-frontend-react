@@ -1,5 +1,6 @@
-const path = require('path');
-const Webpack = require('webpack');
+/* eslint-disable no-var */
+var path = require('path');
+var Webpack = require('webpack');
 const { stringifyConfigValues, generateHTMLFile, generateDevServerSettings } = require('./WebpackConfigs.utils');
 
 type GlobalVariables = { [key: string]: string | number | boolean };
