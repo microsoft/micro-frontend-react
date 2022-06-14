@@ -1,6 +1,10 @@
 {
-  "packages": ["packages/*", "samples/*", "extensions/*"],
+  "packages": [
+    "packages/*",
+    "samples/*",
+    "extensions/*"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
