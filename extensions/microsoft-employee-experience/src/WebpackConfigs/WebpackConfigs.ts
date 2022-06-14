@@ -96,8 +96,8 @@ module.exports = (options: BuildConfigOptions) => {
             options: {
               transpileOnly: true,
             },
-            ...(options.moduleRules || []),
           },
+          ...(options.moduleRules || []),
         ],
       },
       output: {
@@ -165,7 +165,6 @@ module.exports = (options: BuildConfigOptions) => {
               : false,
           },
     });
-
-    return webpackConfigs;
   }
+  return webpackConfigs;
 };

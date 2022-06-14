@@ -27,7 +27,7 @@
     "@fluentui/react": "^8.64.2",
     "@m365-admin/customizations": "^7.3.2",
     "@micro-frontend-react/employee-experience": "^1.0.2",
-    "@microsoft/myhub_webauth_sdk": "^0.0.7-Preview",
+    "@microsoft/myhub_webauth_sdk": "^0.0.1-Preview",
     "@ms-ofb/officebrowserfeedback": "^1.8.9",
     "@uifabric/charting": "^4.20.12",
     "@redux-devtools/extension": "^3.2.2",
