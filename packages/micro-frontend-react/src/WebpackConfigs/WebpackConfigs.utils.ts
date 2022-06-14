@@ -12,7 +12,7 @@ module.exports = {
     return result;
   },
 
-  generateHTMLFile: (cwd: string, fileName: string, externalScripts: string[] = []) => {
+  generateHTMLFile: (cwd: string, fileName: string, externalScripts: string[] = [], styles = '') => {
     const basePath = path.join(cwd, 'public');
 
     fs.mkdirSync(basePath, { recursive: true });
@@ -24,6 +24,7 @@ module.exports = {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>${styles}</style>
     </head>
     <body>
         <div id="app"></div>
