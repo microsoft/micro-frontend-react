@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@micro-frontend-react/employee-experience-generator-template",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "author": "Microsoft Employee Experience Team",
@@ -26,7 +26,7 @@
     "@fluentui/style-utilities": "^8.6.5",
     "@fluentui/react": "^8.64.2",
     "@m365-admin/customizations": "^7.3.2",
-    "@micro-frontend-react/employee-experience": "^1.0.2",
+    "@micro-frontend-react/employee-experience": "^1.0.5",
     "@microsoft/myhub_webauth_sdk": "^0.0.7-Preview",
     "@ms-ofb/officebrowserfeedback": "^1.8.9",
     "@uifabric/charting": "^4.20.12",
