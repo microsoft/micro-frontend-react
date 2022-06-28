@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Context } from '@micro-frontend-react/core/lib/Context';
+import { Context } from '../Context';
 import { IEmployeeExperienceContext } from '../IEmployeeExperienceContext';
 import { IWithButtonClickLoggingProps } from './withButtonClickLogging.types';
 import { UserEvent, EventType, UsageEventName } from '../UsageTelemetry';
