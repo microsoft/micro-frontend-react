@@ -3,6 +3,4 @@ import { PrimaryButton as FabricPrimaryButton } from '@fluentui/react/lib/Button
 import { IButtonProps } from './IButtonProps';
 import { withButtonClickLogging } from './withButtonClickLogging';
 
-export const PrimaryButton = withButtonClickLogging<IButtonProps>(
-    FabricPrimaryButton as ComponentType<IButtonProps>
-);
+export const PrimaryButton = withButtonClickLogging<IButtonProps>(FabricPrimaryButton as ComponentType<IButtonProps>);
