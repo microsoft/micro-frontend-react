@@ -4,7 +4,7 @@ import { IStoreBuilderResult } from '@micro-frontend-react/redux/lib/IStoreBuild
 import { injectReduxContext } from '@micro-frontend-react/redux/lib/InjectReduxContext';
 import { IEmployeeExperienceContext } from './IEmployeeExperienceContext';
 
-export function withStore<T>(
+export function withStore<T extends {}>(
   storeBuilderResult: IStoreBuilderResult<T>
 ): (WrappedComponent: React.ComponentType<IEmployeeExperienceContext>) => React.ComponentType {
   const { store, context, ...otherResults } = storeBuilderResult;
