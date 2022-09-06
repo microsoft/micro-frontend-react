@@ -13,4 +13,5 @@ export interface IEmployeeExperienceContext extends IReduxContext {
   usageClient: IUsageClient;
   telemetryClient: ITelemetryClient;
   telemetryContext: ITelemetryContext;
+  appName?: string;
 }
