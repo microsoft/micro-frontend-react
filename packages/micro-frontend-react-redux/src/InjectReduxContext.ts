@@ -2,7 +2,7 @@ import { ReactReduxContext, useSelector } from 'react-redux';
 import { IReduxContext } from './IReduxContext';
 import { IStoreBuilderResult } from './IStoreBuilderResult';
 
-export function injectReduxContext<T>(storeBuilderResult: IStoreBuilderResult<T>): IReduxContext {
+export function injectReduxContext<T extends {}>(storeBuilderResult: IStoreBuilderResult<T>): IReduxContext {
   const { store, ...otherResults } = storeBuilderResult;
 
   return {
