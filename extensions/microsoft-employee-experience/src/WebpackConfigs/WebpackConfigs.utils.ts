@@ -29,6 +29,8 @@ module.exports = {
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>${styles}</style>
     </head>
