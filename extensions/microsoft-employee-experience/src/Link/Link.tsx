@@ -8,7 +8,7 @@ import { ILinkProps } from './Link.types';
 import { shouldUseAnchorTag } from './Link.utils';
 
 export function Link(props: React.PropsWithChildren<ILinkProps>): React.ReactElement {
-  const { to, children, activeStyle, exact, title, className, target, activeClassName, disabled, refresh } = props;
+  const { to, children, activeStyle, exact, title, className, target, activeClassName, disabled, refresh, role, ariaLabel, onClick, } = props;
   const { telemetryClient } = React.useContext(Context as React.Context<IEmployeeExperienceContext>);
   const href = to || '/';
 
@@ -25,6 +25,9 @@ export function Link(props: React.PropsWithChildren<ILinkProps>): React.ReactEle
       properties: { to, title },
       ...(props.logCustomProperties?.() || {}),
     });
+    if (onClick) {
+      onClick();
+    }
   };
 
   if (shouldUseAnchorTag(href, refresh))
@@ -37,6 +40,8 @@ export function Link(props: React.PropsWithChildren<ILinkProps>): React.ReactEle
         title={title}
         className={className}
         disabled={disabled}
+        aria-label={ariaLabel}
+        role={role}
       >
         {children}
       </FluentLink>
@@ -56,6 +61,8 @@ export function Link(props: React.PropsWithChildren<ILinkProps>): React.ReactEle
       className={className}
       activeClassName={activeClassName}
       disabled={disabled}
+      aria-label={props['aria-label']}
+      role={role}
     >
       {children}
     </FluentLink>
