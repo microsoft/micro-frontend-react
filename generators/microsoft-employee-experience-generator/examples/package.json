@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@azure/msal-browser": "^2.23.0",
-    "@microsoft/applicationinsights-web": "^2.8.2",
+    "@microsoft/applicationinsights-web": "^2.8.6",
     "@coherence-design-system/controls": "^4.0.6",
     "@coherence-design-system/styles": "^1.4.4",
     "@fluentui/date-time-utilities": "^8.5.0",
