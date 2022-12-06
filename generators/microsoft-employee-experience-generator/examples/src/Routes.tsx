@@ -20,6 +20,13 @@ export function Routes(): React.ReactElement {
           name: 'DynamicSubRoutes',
         }}
       />
+      <RouteComponentProvider
+        path="/codesplitting"
+        config={{
+          script: '/bundles/code-splitting.js',
+          name: 'CodeSplitting',
+        }}
+      />
     </Switch>
   );
 }

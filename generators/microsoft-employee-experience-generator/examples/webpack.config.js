@@ -33,6 +33,7 @@ const microFrontendEntries = {
 
   'dynamic-redux-hooks': './src/Samples/DynamicReduxHooks/DynamicReduxHooks.tsx',
   'dynamic-sub-routes': './src/Samples/DynamicSubRoutes/DynamicSubRoutes.tsx',
+  'code-splitting': './src/Samples/CodeSplitting/CodeSplitting.tsx',
   'dynamic-route-param-consumer': './src/Samples/DynamicSubRoutes/DynamicRouteParamConsumer.tsx',
 };
 

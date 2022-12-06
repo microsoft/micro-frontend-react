@@ -8,7 +8,6 @@ import { Home } from './Home';
 const userProvider = {
   getUserName: () => 'Sample User',
 };
-
 export function App(): React.ReactElement {
   return (
     <BrowserRouter>

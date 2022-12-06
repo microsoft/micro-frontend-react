@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Enable micro-frontend architecture on your react application",
   "scripts": {
+    "init": "lerna bootstrap",
     "build": "lage build --no-cache",
     "serve": "lage serve",
     "serve:redux": "lage serve:redux",
@@ -44,7 +45,7 @@
     "jest": "^27.5.1",
     "jest-junit": "^13.1.0",
     "jest-trx-results-processor": "^2.2.1",
-    "lage": "^1.5.1",
+    "lage": "^1.9.5",
     "lerna": "^4.0.0",
     "prettier": "^2.6.2",
     "react": "^18.0.0",
