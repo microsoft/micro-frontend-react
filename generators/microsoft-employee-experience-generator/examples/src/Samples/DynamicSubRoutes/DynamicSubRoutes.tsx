@@ -1,3 +1,5 @@
+import { CodeSplitter } from '@micro-frontend-react/employee-experience/lib/CodeSplitter';
+import { PersonaSize } from '@micro-frontend-react/employee-experience/lib/Persona';
 import * as React from 'react';
 import * as Styled from '../Shared/Layout';
 import { withRouter, Switch, Route, RouteComponentProps } from 'react-router-dom';
@@ -47,6 +49,11 @@ function DynamicSubRoutes(props: RouteComponentProps): React.ReactElement {
               Subroute 3 - Dynamic with route param
             </Link>
           </li>
+          <li>
+            <Link to={`${match.url}/subroute-4`} title="Go to SubRoute 4" {...getClickFeature(feature, 'SubRoute4')}>
+              Subroute 4 - Code splitting
+            </Link>
+          </li>
         </ul>
       </Styled.Space>
 
@@ -65,6 +72,27 @@ function DynamicSubRoutes(props: RouteComponentProps): React.ReactElement {
             script: '/bundles/dynamic-route-param-consumer.js',
             name: 'DynamicRouteParamConsumer',
           }}
+        />
+        <Route
+          path={`${match.url}/subroute-4`}
+          render={(): React.ReactElement => (
+            <CodeSplitter
+              name="MyProfile"
+              import={async () =>
+                import(
+                  // webpackChunkName: 'my-profile'
+                  '../CodeSplitting/MyProfile'
+                )
+              }
+              props={{
+                // @ts-ignore
+                profile: {
+                  displayName: 'John Doe',
+                  jobTitle: 'Test Title',
+                },
+              }}
+            />
+          )}
         />
       </Switch>
     </Styled.Container>
