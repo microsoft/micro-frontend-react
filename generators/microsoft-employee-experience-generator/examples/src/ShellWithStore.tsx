@@ -34,7 +34,6 @@ const authClient = new AuthClient(
 
 const httpClient = new HttpClient(telemetryClient, authClient);
 const graphClient = new GraphClient(httpClient);
-
 const reducerRegistry = new ReducerRegistry();
 const appName = 'DemoApp';
 const storeResult = new StoreBuilder(reducerRegistry, {})

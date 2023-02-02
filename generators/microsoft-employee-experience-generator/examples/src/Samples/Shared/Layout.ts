@@ -1,10 +1,7 @@
 import { Text } from '@fluentui/react/lib/Text';
 
 export const Container = styled.div`
-  margin-top: 48px;
-  margin-bottom: 48px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 48px 5%;
 `;
 
 export const Space = styled.div`
