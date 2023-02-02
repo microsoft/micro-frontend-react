@@ -17,7 +17,8 @@ module.exports = {
     fileName: string,
     externalScripts: string[] = [],
     styles = '',
-    isBuildOnce = false
+    isBuildOnce = false,
+    scriptQueryString = null
   ) => {
     const basePath = path.join(cwd, 'public', isBuildOnce ? `buildonce` : '');
 
@@ -41,8 +42,12 @@ module.exports = {
         
         ${
           isBuildOnce
-            ? `<script src="/buildonce/${fileName}.js"></script>`
-            : `<script src="/bundles/${fileName}.js"></script>`
+            ? `<script src="/buildonce/${fileName}.js${
+                scriptQueryString != null ? `?${scriptQueryString}` : ''
+              }"></script>`
+            : `<script src="/bundles/${fileName}.js"${
+                scriptQueryString != null ? `?${scriptQueryString}` : ''
+              }></script>`
         }
       </body>
 </html>`

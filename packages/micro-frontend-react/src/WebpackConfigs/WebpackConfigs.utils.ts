@@ -12,7 +12,13 @@ module.exports = {
     return result;
   },
 
-  generateHTMLFile: (cwd: string, fileName: string, externalScripts: string[] = [], styles = '') => {
+  generateHTMLFile: (
+    cwd: string,
+    fileName: string,
+    externalScripts: string[] = [],
+    styles = '',
+    scriptQueryString: string | null = null
+  ) => {
     const basePath = path.join(cwd, 'public');
 
     fs.mkdirSync(basePath, { recursive: true });
@@ -31,7 +37,7 @@ module.exports = {
 
         ${(externalScripts || []).map((p) => `<script src="${p}"></script>`).join('')}
         
-        <script src="/bundles/${fileName}.js"></script>
+        <script src="/bundles/${fileName}.js${scriptQueryString != null ? `?${scriptQueryString}` : ''}"></script>
     </body>
 </html>`
     );

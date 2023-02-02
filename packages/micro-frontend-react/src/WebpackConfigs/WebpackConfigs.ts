@@ -28,6 +28,8 @@ type BuildConfigOptions = {
   externals?: Externals;
   externalScripts?: ExternalScripts;
   styles?: string;
+  // Attach a query string to the script tag that loads the host app for cache bursting
+  scriptQueryString?: string;
 };
 
 module.exports = (options: BuildConfigOptions) => {
@@ -36,7 +38,13 @@ module.exports = (options: BuildConfigOptions) => {
   const hasHostEntries = !!options.hostEntries && Object.keys(options.hostEntries).length > 0;
   if (hasHostEntries) {
     if (Object.keys(options.hostEntries!).length > 1) throw new Error('There can be only one host app.');
-    generateHTMLFile(options.cwd, Object.keys(options.hostEntries!)[0], options.externalScripts, options.styles);
+    generateHTMLFile(
+      options.cwd,
+      Object.keys(options.hostEntries!)[0],
+      options.externalScripts,
+      options.styles,
+      options.scriptQueryString
+    );
 
     webpackConfigs.push({
       name: 'static',
