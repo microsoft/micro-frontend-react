@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/employee-experience",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Micro-Frontend React Extension for Microsoft Employee Experience Team",
   "main": "index.js",
   "author": "Microsoft",
@@ -17,7 +17,7 @@
     "release": "npm publish"
   },
   "dependencies": {
-    "@micro-frontend-react/redux": "^1.0.11"
+    "@micro-frontend-react/redux": "^1.0.12"
   },
   "peerDependencies": {
     "@azure/msal-browser": ">= ^2.22.0 < 3",
