@@ -1,18 +1,17 @@
+import { CoherenceTheme } from '@coherence-design-system/styles';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { initializeOBFeedback } from '@coherence-design-system/controls/lib/OfficeBrowerFeedback';
+import { initializeOBFeedback } from '@coherence-design-system/controls';
 import { useLoginOnStartup } from '@micro-frontend-react/employee-experience/lib/useLoginOnStartup';
 import { Header } from './Components/Header';
 import { Nav } from './Components/Nav';
 import { Main } from './Components/Main';
-import { Footer } from './Components/Footer';
-import { CoherenceThemeProvider } from './Components/CoherenceThemeProvider';
 import { ShellWithStore } from './ShellWithStore';
-
 import { navConfig } from './navConfig';
 import { Routes } from './Routes';
 import { useHeaderConfig } from './useHeaderConfig';
+import { loadTheme, ThemeProvider } from '@fluentui/react';
 
 initializeOBFeedback(
   1111,
@@ -25,19 +24,19 @@ initializeOBFeedback(
 
 function App(): React.ReactElement {
   useLoginOnStartup();
+  loadTheme(CoherenceTheme);
   const headerConfig = useHeaderConfig();
 
   return (
-    <CoherenceThemeProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ThemeProvider theme={CoherenceTheme}>
         <Header {...headerConfig} />
         <Nav groups={navConfig} />
         <Main>
           <Routes />
         </Main>
-        <Footer>I am a sticky footer!</Footer>
-      </BrowserRouter>
-    </CoherenceThemeProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

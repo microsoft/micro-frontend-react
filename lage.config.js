@@ -5,6 +5,7 @@ module.exports = {
     lint: [],
     serve: ['^serve'],
     'serve:redux': ['^serve:redux'],
+    'serve:ee': ['^serve:ee'],
     clean: ['^clean'],
     release: ['^release'],
   },
