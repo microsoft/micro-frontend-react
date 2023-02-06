@@ -26,6 +26,7 @@ type BuildConfigOptions = {
   externals?: Externals;
   externalScripts?: ExternalScripts;
   styles?: string;
+  scriptQueryString?: string;
 };
 
 module.exports = (options: BuildConfigOptions) => {
@@ -34,7 +35,14 @@ module.exports = (options: BuildConfigOptions) => {
   const hasHostEntries = !!options.hostEntries && Object.keys(options.hostEntries).length > 0;
   if (hasHostEntries) {
     if (Object.keys(options.hostEntries!).length > 1) throw new Error('There can be only one host app.');
-    generateHTMLFile(options.cwd, Object.keys(options.hostEntries!)[0], options.externalScripts, options.styles);
+    generateHTMLFile(
+      options.cwd,
+      Object.keys(options.hostEntries!)[0],
+      options.externalScripts,
+      options.styles,
+      false,
+      options.scriptQueryString
+    );
 
     webpackConfigs.push({
       name: 'static',
@@ -121,7 +129,7 @@ module.exports = (options: BuildConfigOptions) => {
 
   if (!!options.buildOnceEntries && Object.keys(options.buildOnceEntries).length > 0) {
     Object.keys(options.buildOnceEntries).forEach((p) => {
-      generateHTMLFile(options.cwd, p, options.externalScripts, options.styles, true);
+      generateHTMLFile(options.cwd, p, options.externalScripts, options.styles, true, options.scriptQueryString);
     });
 
     webpackConfigs.push({
