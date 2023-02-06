@@ -11,6 +11,7 @@ const globalVariables = {
    * ====================== */
 
   __IS_DEVELOPMENT__: process.env.NODE_ENV === 'development' || true,
+  __VERSION__: process.env.version || '1.0.0',
   __APP_NAME__: 'Employee Experience Generator',
   __BASE_URL__: process.env.baseUrl || `http${useHttps ? 's' : ''}://localhost:${devServerPort}`,
 
@@ -47,6 +48,7 @@ module.exports = generateBuildConfig({
     openBrowser,
   },
   globalVariables,
+  scriptQueryString: globalVariables.__VERSION__,
   externals: {
     'react-router-dom': 'ReactRouterDOM',
   },

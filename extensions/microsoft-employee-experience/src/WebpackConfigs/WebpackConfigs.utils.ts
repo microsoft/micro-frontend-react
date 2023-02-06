@@ -45,9 +45,9 @@ module.exports = {
             ? `<script src="/buildonce/${fileName}.js${
                 scriptQueryString != null ? `?${scriptQueryString}` : ''
               }"></script>`
-            : `<script src="/bundles/${fileName}.js"${
+            : `<script src="/bundles/${fileName}.js${
                 scriptQueryString != null ? `?${scriptQueryString}` : ''
-              }></script>`
+              }"></script>`
         }
       </body>
 </html>`
