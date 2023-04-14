@@ -27,6 +27,7 @@ type BuildConfigOptions = {
   externalScripts?: ExternalScripts;
   styles?: string;
   scriptQueryString?: string;
+  contentSecurityPolicy?: string;
 };
 
 module.exports = (options: BuildConfigOptions) => {
@@ -41,7 +42,8 @@ module.exports = (options: BuildConfigOptions) => {
       options.externalScripts,
       options.styles,
       false,
-      options.scriptQueryString
+      options.scriptQueryString,
+      options.contentSecurityPolicy
     );
 
     webpackConfigs.push({
@@ -129,7 +131,7 @@ module.exports = (options: BuildConfigOptions) => {
 
   if (!!options.buildOnceEntries && Object.keys(options.buildOnceEntries).length > 0) {
     Object.keys(options.buildOnceEntries).forEach((p) => {
-      generateHTMLFile(options.cwd, p, options.externalScripts, options.styles, true, options.scriptQueryString);
+      generateHTMLFile(options.cwd, p, options.externalScripts, options.styles, true, options.scriptQueryString, options.contentSecurityPolicy);
     });
 
     webpackConfigs.push({

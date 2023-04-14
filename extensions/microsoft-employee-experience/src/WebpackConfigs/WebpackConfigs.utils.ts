@@ -18,7 +18,8 @@ module.exports = {
     externalScripts: string[] = [],
     styles = '',
     isBuildOnce = false,
-    scriptQueryString = null
+    scriptQueryString = null,
+    contentSecurityPolicy = null
   ) => {
     const basePath = path.join(cwd, 'public', isBuildOnce ? `buildonce` : '');
 
@@ -33,6 +34,7 @@ module.exports = {
         <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        ${contentSecurityPolicy ? `<meta http-equiv="Content-Security-Policy" content="${contentSecurityPolicy}" />` : ''}
         <style>${styles}</style>
     </head>
     <body>
