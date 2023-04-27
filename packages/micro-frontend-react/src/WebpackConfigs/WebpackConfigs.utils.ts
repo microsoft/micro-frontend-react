@@ -17,7 +17,8 @@ module.exports = {
     fileName: string,
     externalScripts: string[] = [],
     styles = '',
-    scriptQueryString: string | null = null
+    scriptQueryString: string | null = null,
+    contentSecurityPolicy = null
   ) => {
     const basePath = path.join(cwd, 'public');
 
@@ -30,6 +31,7 @@ module.exports = {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        ${contentSecurityPolicy ? `<meta http-equiv="Content-Security-Policy" content="${contentSecurityPolicy}" />` : ''}
         <style>${styles}</style>
     </head>
     <body>

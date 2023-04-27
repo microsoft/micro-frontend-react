@@ -30,6 +30,7 @@ type BuildConfigOptions = {
   styles?: string;
   // Attach a query string to the script tag that loads the host app for cache bursting
   scriptQueryString?: string;
+  contentSecurityPolicy?: string;
 };
 
 module.exports = (options: BuildConfigOptions) => {
@@ -43,7 +44,8 @@ module.exports = (options: BuildConfigOptions) => {
       Object.keys(options.hostEntries!)[0],
       options.externalScripts,
       options.styles,
-      options.scriptQueryString
+      options.scriptQueryString,
+      options.contentSecurityPolicy
     );
 
     webpackConfigs.push({
