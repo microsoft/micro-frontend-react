@@ -80,7 +80,7 @@ export class TelemetryClient implements ITelemetryClient {
     this.appInsights.setAuthenticatedUserContext(authenticatedUserId, accountId, storeInCookie);
   }
 
-  public trackException(exception: AI.IExceptionTelemetry): void {
+  public trackException(exception: AI.IExceptionTelemetry, customProperties?: CustomProperties): void {
     try {
       const emptyEvent = {
         type: EventType.System,
@@ -90,7 +90,7 @@ export class TelemetryClient implements ITelemetryClient {
     } catch (error) {
       // Ignore error and log the exception as is.
     }
-    this.appInsights.trackException(exception);
+    this.appInsights.trackException(exception, customProperties);
   }
 
   public _onerror(exception: AI.IAutoExceptionTelemetry): void {
