@@ -1,5 +1,5 @@
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
-import { createStore, applyMiddleware, Middleware, combineReducers, ReducersMapObject, Reducer } from 'redux';
+import {createStore, applyMiddleware, Middleware, combineReducers, ReducersMapObject, Reducer, AnyAction} from 'redux';
 import { persistReducer, persistStore, PersistConfig } from 'redux-persist';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import persistStorage from 'redux-persist/es/storage';
@@ -58,6 +58,8 @@ export class StoreBuilder<T extends IDefaultState> implements IStoreBuilder<T> {
         ...(typeof enableOrOption !== 'boolean' ? enableOrOption : {}),
       };
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       this.middlewares.push(createLogger(opt));
     }
 

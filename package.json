@@ -23,7 +23,6 @@
     "@fluentui/react": "^8.105.2",
     "@microsoft/applicationinsights-web": "^2.8.9",
     "@redux-devtools/extension": "^3.2.5",
-    "@testing-library/react-hooks": "^8.0.1",
     "@types/enzyme": "^3.10.12",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.11.18",
