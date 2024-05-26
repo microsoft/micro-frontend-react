@@ -20,7 +20,7 @@ While the proper documentation is being prepared, please see the following sampl
     ```
 * [Micro-Frontend application](https://github.com/microsoft/microfrontend/blob/main/samples/sample-react-micro-frontend/src/MicroFrontendApp.tsx)
   * Micro-Frontends are components that are developed and deployed in isolation
-  * Micro-Frontends will receive receive the "Context" when mounted
+  * Micro-Frontends will receive the "Context" when mounted
 
 ## React.js with Redux
 * [Host application with Redux](https://github.com/microsoft/micro-frontend/blob/main/samples/sample-react-redux-host/src/App.tsx)
