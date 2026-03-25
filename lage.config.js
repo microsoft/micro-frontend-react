@@ -9,7 +9,7 @@ module.exports = {
     clean: ['^clean'],
     release: ['^release'],
   },
-  npmClient: 'yarn',
+  npmClient: 'npm',
   priorities: [
     {
       package: '@micro-frontend-react/react',

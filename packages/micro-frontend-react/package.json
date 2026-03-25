@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/core",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "",
   "main": "index.js",
   "author": "Microsoft",
@@ -17,11 +17,14 @@
     "release": "npm publish"
   },
   "peerDependencies": {
-    "react": ">= 16 < 19",
-    "webpack": ">= ^5.69.1 < 6"
+    "react": ">= 16",
+    "webpack": "^5.105.4"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "axios": "1.13.6"
   }
 }

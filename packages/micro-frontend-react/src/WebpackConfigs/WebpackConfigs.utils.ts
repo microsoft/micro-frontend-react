@@ -54,7 +54,7 @@ module.exports = {
       compress: true,
       port: devServerOptions?.devServerPort ?? 9000,
       historyApiFallback: true,
-      https: !!devServerOptions?.useHttps ?? false,
+      server: devServerOptions?.useHttps ? 'https' : 'http',
       devMiddleware: {
         writeToDisk: true,
       },

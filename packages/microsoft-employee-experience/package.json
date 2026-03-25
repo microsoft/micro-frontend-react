@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/employee-experience",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Micro-Frontend React Extension for Microsoft Employee Experience Team",
   "main": "index.js",
   "author": "Microsoft",
@@ -17,15 +17,15 @@
     "release": "npm publish"
   },
   "dependencies": {
-    "@micro-frontend-react/redux": "^1.0.15"
+    "@micro-frontend-react/redux": "^1.0.17"
   },
   "peerDependencies": {
-    "@azure/msal-browser": ">= ^2.22.0 < 3",
-    "@fluentui/react": ">= ^8.56.1 < 9",
-    "@microsoft/applicationinsights-web": ">= ^2.7.3 < 3",
-    "axios": ">= ^1.0 < 2.0",
-    "styled-components": ">= ^5.3.0 < 6",
-    "uuid": ">= ^9.0.0 < 10"
+    "@azure/msal-browser": ">= 4",
+    "@fluentui/react": ">= 8",
+    "@microsoft/applicationinsights-web": ">= 2",
+    "axios": ">= 1",
+    "styled-components": ">= 5",
+    "uuid": ">= 9"
   },
   "publishConfig": {
     "access": "public",
