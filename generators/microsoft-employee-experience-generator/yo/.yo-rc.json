@@ -1,9 +1,0 @@
-{
-  "generator-node": {
-    "promptValues": {
-      "authorName": "Won Song",
-      "authorEmail": "wosong@microsoft.com",
-      "authorUrl": ""
-    }
-  }
-}

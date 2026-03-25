@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ComponentProvider } from '@micro-frontend-react/core/lib/ComponentProvider';
 import { Context } from '@micro-frontend-react/core/lib/Context';
 import { ReducerRegistry } from '@micro-frontend-react/redux/lib/ReducerRegistry';
@@ -27,19 +27,20 @@ export type AppState = {
 export function App(): React.ReactElement {
   return (
     <BrowserRouter>
-      <Route path="/" exact component={Home} />
-
-      <Route
-        path="/micro-frontend"
-        render={() => (
-          <ComponentProvider
-            config={{
-              script: 'http://localhost:8000/bundles/micro-frontend-app.js',
-              name: 'MicroFrontendApp',
-            }}
-          />
-        )}
-      />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route
+          path="/micro-frontend"
+          render={() => (
+            <ComponentProvider
+              config={{
+                script: 'http://localhost:8000/bundles/micro-frontend-app.js',
+                name: 'MicroFrontendApp',
+              }}
+            />
+          )}
+        />
+      </Switch>
     </BrowserRouter>
   );
 }

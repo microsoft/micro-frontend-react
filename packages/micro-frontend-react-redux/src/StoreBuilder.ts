@@ -165,7 +165,8 @@ export class StoreBuilder<T extends IDefaultState> implements IStoreBuilder<T> {
           key: `${this.persistConfig.key}.dynamic`,
           whitelist: undefined,
           blacklist: persistBlacklistedDynamicReducers,
-        },
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
         combineReducers(dynamicReducers)
       );
     }

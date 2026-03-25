@@ -33,8 +33,8 @@ module.exports = generateBuildConfig({
   },
   globalVariables,
   externalScripts: [
-    'https://ee.azureedge.net/react/17.0.2/react.production.min.js',
-    'https://ee.azureedge.net/react/17.0.2/react-is.production.min.js',
-    'https://ee.azureedge.net/react/17.0.2/react-dom.production.min.js',
+    'https://ee.azureedge.net/react/18.3.1/react.production.min.js',
+    'https://ee.azureedge.net/react/18.3.1/react-is.production.min.js',
+    'https://ee.azureedge.net/react/18.3.1/react-dom.production.min.js',
   ],
 });

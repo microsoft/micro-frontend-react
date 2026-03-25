@@ -43,7 +43,9 @@ export class AuthClient<T extends IUser> implements IAuthClient<T> {
     });
     this.options = options || {};
 
-    this.authContext.handleRedirectPromise().then(this.handleRedirectCompleted.bind(this));
+    this.authContext.initialize().then(() => {
+      this.authContext.handleRedirectPromise().then(this.handleRedirectCompleted.bind(this));
+    });
   }
 
   public login(loginOptions: ILoginOptions | undefined = {}): Promise<void> {

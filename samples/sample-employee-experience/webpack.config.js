@@ -49,14 +49,11 @@ module.exports = generateBuildConfig({
   },
   globalVariables,
   scriptQueryString: globalVariables.__VERSION__,
-  externals: {
-    'react-router-dom': 'ReactRouterDOM',
-  },
   externalScripts: [
-    'https://ee.azureedge.net/react/17.0.2/react.production.min.js',
-    'https://ee.azureedge.net/react/17.0.2/react-is.production.min.js',
-    'https://ee.azureedge.net/react/17.0.2/react-dom.production.min.js',
-    'https://ee.azureedge.net/react-router-dom/5.3.0/react-router-dom.min.js',
-    'https://ee.azureedge.net/styled-components/5.3.3/styled-components.min.js',
+    'https://ee.azureedge.net/react/18.3.1/react.production.min.js',
+    'https://ee.azureedge.net/react/18.3.1/react-is.production.min.js',
+    'https://ee.azureedge.net/react/18.3.1/react-dom.production.min.js',
+    'https://ee.azureedge.net/react-router-dom/5.3.4/react-router-dom.min.js',
+    'https://ee.azureedge.net/styled-components/5.3.11/styled-components.min.js',
   ],
 });
