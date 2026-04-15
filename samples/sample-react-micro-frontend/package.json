@@ -9,6 +9,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@micro-frontend-react/core": "^1.0.17"
+    "@micro-frontend-react/core": "^1.0.18"
   }
 }
