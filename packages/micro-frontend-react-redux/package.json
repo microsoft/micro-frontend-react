@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/redux",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "",
   "main": "index.js",
   "author": "Microsoft",
@@ -17,14 +17,12 @@
     "release": "npm publish"
   },
   "dependencies": {
-    "@micro-frontend-react/core": "^1.0.17",
-    "axios": "1.13.6"
+    "@micro-frontend-react/core": "^1.0.18"
   },
   "peerDependencies": {
     "@redux-devtools/extension": ">= 3",
     "react": ">= 16",
     "react-redux": ">= 8",
-    "react-router-dom": ">= 5",
     "redux": ">= 4",
     "redux-logger": ">= 3",
     "redux-persist": ">= 6",

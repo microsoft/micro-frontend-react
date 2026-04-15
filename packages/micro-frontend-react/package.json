@@ -1,6 +1,6 @@
 {
   "name": "@micro-frontend-react/core",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "",
   "main": "index.js",
   "author": "Microsoft",
@@ -23,8 +23,5 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "dependencies": {
-    "axios": "1.13.6"
   }
 }

@@ -36,7 +36,7 @@
     "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
-    "axios": "1.13.6",
+    "axios": "^1.15.0",
     "buffer": "^6.0.3",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
