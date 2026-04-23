@@ -17,24 +17,13 @@ export class ComponentProvider extends React.Component<IComponentProviderProps, 
   };
 
   public async componentDidMount(): Promise<void> {
-    const component = await this.loadComponent();
-
-    this.setState({
-      Component: component,
-      hasError: false,
-    });
+    this.updateStateOnLoad();
   }
 
   public async componentDidUpdate(prevProps: IComponentProviderProps): Promise<void> {
     const { config } = prevProps;
-
     if (this.shouldReload(config)) {
-      const component = await this.loadComponent();
-
-      this.setState({
-        Component: component,
-        hasError: false,
-      });
+      this.updateStateOnLoad();
     }
   }
 
@@ -165,5 +154,14 @@ export class ComponentProvider extends React.Component<IComponentProviderProps, 
     if (!componentConfig.name) return false;
 
     return true;
+  }
+
+  private async updateStateOnLoad(): Promise<void> {
+    const component = await this.loadComponent();
+
+    this.setState({
+      Component: component,
+      hasError: false,
+    });
   }
 }
